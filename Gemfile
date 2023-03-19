@@ -35,6 +35,8 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.2.0'
   # Unit testing
   gem 'rspec-rails', '~> 4.0.1'
+  # Collection of testing matchers extracted from Shoulda
+  gem 'shoulda-matchers', '~> 4.0.1'
 end
 
 group :development do
