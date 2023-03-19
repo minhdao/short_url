@@ -31,6 +31,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Strategies for cleaning databases in Ruby. Can be used to ensure a clean state for testing.
+  gem 'database_cleaner', '~> 2.0.1'
   # Setting up Ruby objects for unit testing
   gem 'factory_bot_rails', '~> 6.2.0'
   # Unit testing
