@@ -40,6 +40,7 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include Shoulda::Matchers::ActiveModel, type: :controller
   config.include Shoulda::Matchers::ActiveModel, type: :model
+  config.include Shoulda::Matchers::ActiveModel, type: :service
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
