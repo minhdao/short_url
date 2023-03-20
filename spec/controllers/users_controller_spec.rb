@@ -37,7 +37,7 @@ RSpec.describe UsersController, type: :controller do
 
         it { expect(response).to have_http_status(:unprocessable_entity) }
         it { expect(JSON.parse(response.body)['errors'].count).to eq(1) }
-        it { expect(JSON.parse(response.body)['errors'].first).to eq('Email is invalid') }
+        it { expect(JSON.parse(response.body)['errors']['email'].join('')).to eq('is invalid') }
       end
 
       context 'with invalid password' do
@@ -53,7 +53,7 @@ RSpec.describe UsersController, type: :controller do
 
         it { expect(response).to have_http_status(:unprocessable_entity) }
         it { expect(JSON.parse(response.body)['errors'].count).to eq(1) }
-        it { expect(JSON.parse(response.body)['errors'].first).to eq('Password is too short (minimum is 4 characters)') }
+        it { expect(JSON.parse(response.body)['errors']['password'].join('')).to eq('is too short (minimum is 4 characters)') }
       end
 
       context 'with missing a required params' do
@@ -69,7 +69,7 @@ RSpec.describe UsersController, type: :controller do
 
         it { expect(response).to have_http_status(:unprocessable_entity) }
         it { expect(JSON.parse(response.body)['errors'].count).to eq(1) }
-        it { expect(JSON.parse(response.body)['errors'].first).to eq("Username can't be blank") }
+        it { expect(JSON.parse(response.body)['errors']['username'].join('')).to eq("can't be blank") }
       end
     end
 
@@ -89,7 +89,7 @@ RSpec.describe UsersController, type: :controller do
 
         it { expect(response).to have_http_status(:unprocessable_entity) }
         it { expect(JSON.parse(response.body)['errors'].count).to eq(1) }
-        it { expect(JSON.parse(response.body)['errors'].first).to eq("Username has already been taken") }
+        it { expect(JSON.parse(response.body)['errors']['username'].join('')).to eq("has already been taken") }
       end
 
       context 'with email' do
@@ -107,7 +107,7 @@ RSpec.describe UsersController, type: :controller do
 
         it { expect(response).to have_http_status(:unprocessable_entity) }
         it { expect(JSON.parse(response.body)['errors'].count).to eq(1) }
-        it { expect(JSON.parse(response.body)['errors'].first).to eq("Email has already been taken") }
+        it { expect(JSON.parse(response.body)['errors']['email'].join('')).to eq("has already been taken") }
       end
     end
   end
