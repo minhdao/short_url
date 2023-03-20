@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     if @user.save
       render json: { username: @user.username, email: @user.email, created_at: @user.created_at, updated_at: @user.updated_at }, status: :created
     else
-      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: @user.errors.messages }, status: :unprocessable_entity
     end
   end
 
