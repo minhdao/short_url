@@ -12,14 +12,4 @@ RSpec.describe ShortLinkService, type: :service do
   describe '.hash' do
     it { expect(described_class.hash(url, uuid, time)).to eq(hashed_result) }
   end
-
-  describe '.slice' do
-    let(:starting) { 0 }
-    let(:ending) { 6 }
-
-    # This is the intented result for slicing a hashed string. ShortLinkSevice slice method must follow this result.
-    let(:slice_result) { hashed_result[starting..ending] }
-
-    it { expect(described_class.slice(hashed_result, starting, ending)).to eq(slice_result) }
-  end
 end

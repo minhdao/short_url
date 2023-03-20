@@ -7,10 +7,6 @@ class ShortLinkService
     Digest::SHA1.hexdigest(original_link + uuid + str_time)
   end
 
-  def self.slice(hashed_link, beginning, ending)
-    hashed_link[beginning..ending]
-  end
-
   def self.build(id)
     "#{protocol}://#{domain}.#{top_level_domain}/#{id}"
   end
@@ -18,7 +14,7 @@ class ShortLinkService
   private
 
   def self.gen_str_time
-    Datetime.current.strftime("%H%M%S%L%N")
+    DateTime.current.strftime("%H%M%S%L%N")
   end
 
   def self.protocol
